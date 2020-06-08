@@ -1,0 +1,13 @@
+.idea
+*.o
+*.dsc
+*.deb
+*.buildinfo
+*.ddeb
+
+webp/debian/changelog
+webp/libwebp-*
+!*.tar.gz
+webp/libwebp_*.debian.tar.xz
+webp/libwebp_*_amd64.changes
+webp/libwebp_*.orig.tar.xz
