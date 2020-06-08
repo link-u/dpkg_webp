@@ -1,22 +1,65 @@
 Source: libwebp
 Priority: optional
 Maintainer: Yoshimasa Hashida <yoshimasa.hashida@link-u.co.jp>
-Build-Depends: debhelper (>= 10), autotools-dev, libtool, autoconf, 
+Build-Depends: debhelper (>= 9), autotools-dev, libtool, autoconf, 
  automake, libjpeg-dev, libgif-dev, libpng-dev, 
  libtiff-dev | libtiff4-dev, freeglut3-dev
 Standards-Version: 4.1.3
 Section: libs
 Homepage: https://developers.google.com/speed/webp/
 
-Package: libwebp
+Package: libwebp-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libwebp6 (= ${binary:Version}), libwebpmux3 (= ${binary:Version}),
+ libwebpdemux2 (= ${binary:Version}), ${misc:Depends}
+Description: Lossy compression of digital photographic images.
+ Image Compression format, based on the VP8 codec.
+ WebP uses the modern VP8 compression format to deliver efficient
+ compression of images for the web. More than 30% extra gain over
+ optimized JPEG, for same quality, is not unusual.
+
+Package: libwebp6
 Section: libs
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Breaks: webp (<< 1.1.0), libwebpdemux2 (<< 1.1.0), 
-        libwebpmux3 (<< 1.1.0), libwebp6 (<< 1.1.0),
-        libwebp-dev (<< 1.1.0)
+Description: Lossy compression of digital photographic images.
+ Image Compression format, based on the VP8 codec.
+ WebP uses the modern VP8 compression format to deliver efficient
+ compression of images for the web. More than 30% extra gain over
+ optimized JPEG, for same quality, is not unusual.
+
+Package: libwebpmux3
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Lossy compression of digital photographic images.
+ Image Compression format, based on the VP8 codec.
+ WebP uses the modern VP8 compression format to deliver efficient
+ compression of images for the web. More than 30% extra gain over
+ optimized JPEG, for same quality, is not unusual.
+
+Package: libwebpdemux2
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Lossy compression of digital photographic images.
+ Image Compression format, based on the VP8 codec.
+ WebP uses the modern VP8 compression format to deliver efficient
+ compression of images for the web. More than 30% extra gain over
+ optimized JPEG, for same quality, is not unusual.
+
+Package: webp
+Section: graphics
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Lossy compression of digital photographic images.
  Image Compression format, based on the VP8 codec.
  WebP uses the modern VP8 compression format to deliver efficient
