@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build debian package
-        uses: link-u/execute-on-separated-ubuntu@master
+        uses: link-u/execute-on-separated-ubuntu@v1
         with:
           script: scripts/all.sh
           on: ${{ matrix.codename }}
