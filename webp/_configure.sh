@@ -4,4 +4,6 @@ set -eu
 
 ./configure \
   --prefix="/usr" \
-  --sysconfdir="/etc"
+  --sysconfdir="/etc" \
+  --enable-libwebpmux \
+  --enable-libwebpdemux
