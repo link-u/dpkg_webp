@@ -1,0 +1,5 @@
+libwebp (%VERSION%) unstable; urgency=medium
+
+  * See https://github.com/link-u/dpkg_webp/releases
+
+ -- Yoshimasa Hashida <yoshimasa.hashida@link-u.co.jp> %DATE%
