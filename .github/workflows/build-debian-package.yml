@@ -26,7 +26,7 @@ jobs:
       - name: Build debian package
         uses: link-u/execute-on-separated-ubuntu@v1
         with:
-          script: scripts/all.sh
+          script: bash scripts/all.sh
           on: ${{ matrix.codename }}
   
       - name: Upload result
