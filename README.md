@@ -3,7 +3,9 @@
 
 ## 概要
 
-最新の webp 関係の deb パッケージをビルドする.
+最新の webp の deb パッケージをビルドできる.
+
+スタティックリンクをしてあるので `libwebp*.deb` 関連に依存しない.
 
 github actions によって最新のソースコードに差し替えるだけで自動的にビルドできる.
 
@@ -12,35 +14,27 @@ github actions によって最新のソースコードに差し替えるだけ�
 以下はビルドができることを確認した OS のバージョンである.
 
 * Ubuntu 18.04 (bionic)
-* Ubuntu 20.04 (focal) ( ← まだ)
+* Ubuntu 20.04 (focal)
 
 ※ 18.04 以降でのビルドならどれでもおそらくビルドできる.
 
 ## 生成される deb ファイル
 
-* `libwebp6`
-* `libwebpdemux2`
-* `libwebpmux3`
-* `libwebp-dev`
 * `webp`
 
 ## deb ファイルの命名規則
 
 * git の HEAD に v から始まるタグが無い場合
   ```
-  <webp の pkg>_<webp の pkg のバージョン>-<YYYYMMDD>.<hhmmss>.<Commit ID>+<OS のコードネーム>_amd64.deb
+  webp_<webp の pkg のバージョン>-<YYYYMMDD>.<hhmmss>.<Commit ID>+<OS のコードネーム>_amd64.deb
   ```
 
 * git の HEAD に v から始まるタグが有る場合
   ```
-  <webp の pkg>_<webp の pkg のバージョン>-<n>.<YYYYMMDD>.<Commit ID>+<OS のコードネーム>_amd64.deb
+  webp_<webp の pkg のバージョン>-<n>.<YYYYMMDD>.<Commit ID>+<OS のコードネーム>_amd64.deb
   ```
   ※ `<n>` は弊社の修正が入るたびに増える自然数
 
-
-## How to build
-
-基本的に github actions によって自動ビルドされるが, 手元のローカルマシンでビルドしたい場合のやり方を以下に示す.
 
 ## git リポジトリからクローン
 
@@ -48,7 +42,10 @@ github actions によって最新のソースコードに差し替えるだけ�
 git clone git@github.com:link-u/dpkg_webp.git
 ```
 
+
 ## deb パッケージの作成
+
+基本的に github actions によって自動ビルドされるが, 手元のローカルマシンでビルドしたい場合のやり方を以下に示す.
 
 deb パッケージの作成ではビルドに必要なツール群や依存するパッケージ群をインストールする必要があるため, 
 
@@ -64,22 +61,22 @@ git リポジトリをルートとして以下のコマンドで Docker コン�
 ```
 ## Ubuntu:18.04 の場合 
 $ docker run --rm -it \
-             -v $(pwd):/opt/dpkg \
-             -w /opt/dpkg \
+             -v $(pwd):/opt/work \
+             -w /opt/work \
              ubuntu:18.04 bash
 
 
 ## Ubuntu:20.04 の場合 
 $ docker run --rm -it \
-             -v $(pwd):/opt/dpkg \
-             -w /opt/dpkg \
+             -v $(pwd):/opt/work \
+             -w /opt/work \
              ubuntu:20.04 bash
 ```
 
 オプションの細かい説明は省くが, 大雑把に以下のことをしている.
 
-* カレントディレクトリをコンテナ内の `/opt/dpkg` にマウント (`-v` オプション).
-* コンテナ起動時の作業ディレクトリを `/opt/dpkg` に移動 (`-w` オプション).
+* カレントディレクトリをコンテナ内の `/opt/work` にマウント (`-v` オプション).
+* コンテナ起動時の作業ディレクトリを `/opt/work` に移動 (`-w` オプション).
 
 次に deb パッケージの作成に必要な以下のツールをインストールする.
 
@@ -98,12 +95,8 @@ $ bash scripts/all.sh
 これらの作業が終わるとコンテナから `exit` して, 以下のパスに deb パッケージが作成されていることを確認する.
 
 ```
-## git リポジトリをカレントディレクトリとして以下のパス
+## git リポジトリをカレントディレクトリとして以下のパスに生成した deb ファイルの一例を示す.
 $ ls -1vd webp/*.deb
-./webp/libwebp6_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebpdemux2_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebpmux3_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebp-dev_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
 ./webp/webp_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
 ```
 
@@ -132,11 +125,7 @@ $ sudo bash scripts/all.sh
 これらの作業が終わると以下のパスに deb パッケージが作成されていることを確認する.
 
 ```
-## git リポジトリをカレントディレクトリとして以下のパス
+## git リポジトリをカレントディレクトリとして以下のパスに生成した deb ファイルの一例を示す.
 $ ls -1vd webp/*.deb
-./webp/libwebp6_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebpdemux2_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebpmux3_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
-./webp/libwebp-dev_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
 ./webp/webp_1.1.0-20200609.112712.30b0ef4+bionic_amd64.deb
 ```
