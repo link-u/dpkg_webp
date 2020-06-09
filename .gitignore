@@ -7,7 +7,10 @@
 
 webp/debian/changelog
 webp/libwebp-*
-!*.tar.gz
+!webp/libwebp-*.tar.gz
 webp/libwebp_*.debian.tar.xz
 webp/libwebp_*_amd64.changes
 webp/libwebp_*.orig.tar.xz
+
+tiff/tiff-*
+!tiff/tiff-*.tar.gz
