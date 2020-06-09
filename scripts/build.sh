@@ -23,3 +23,7 @@ env --chdir="${root_dir}/${pkg_dir}/" cp -r debian "${src_dir}";
 env --chdir="${root_dir}/${pkg_dir}/${src_dir}" fakeroot debian/rules clean -j"$(nproc)"
 env --chdir="${root_dir}/${pkg_dir}/${src_dir}" fakeroot debian/rules build -j"$(nproc)"
 env --chdir="${root_dir}/${pkg_dir}/${src_dir}" fakeroot debian/rules binary -j"$(nproc)"
+
+## 不要なパッケージの削除
+#  * webp はスタティックリンクしているため共有ライブラリは必要ない.
+rm "${root_dir}/${pkg_dir}/libwebp"*"$(lsb_release -cs)"*".deb"
