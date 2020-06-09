@@ -28,7 +28,9 @@ build build-arch build-indep: configure
 override_dh_auto_configure:
 # Force aligned memory operations in non-dsp code on sparc*
 ifneq (,$(findstring $(DEB_HOST_ARCH),sparc sparc64))
-	dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux --enable-aligned
+	#dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux --enable-aligned
+	dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux --enable-shared=no --with-tifflibdir=/opt/tiff/lib --with-tiffincludedir=/opt/tiff/include --enable-aligned
 else
-	dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux
+	#dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux
+	dh_auto_configure -- --enable-libwebpmux --enable-libwebpdemux --enable-shared=no --with-tifflibdir=/opt/tiff/lib --with-tiffincludedir=/opt/tiff/include
 endif
