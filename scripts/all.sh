@@ -2,7 +2,7 @@
 
 set -eu
 
-## git リポジトリ上の root のパスを取得
+## git リポジトリ上の scripts ディレクトリのパスを取得
 scripts_dir=$(readlink -f $(cd $(dirname $0) && pwd))
 
 ## パッケージのディレクトリ名
