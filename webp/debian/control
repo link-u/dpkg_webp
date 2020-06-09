@@ -12,7 +12,7 @@ Package: libwebp-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: libwebp6 (= ${binary:Version}), libwebpmux3 (= ${binary:Version}),
+Depends: libwebp7 (= ${binary:Version}), libwebpmux3 (= ${binary:Version}),
  libwebpdemux2 (= ${binary:Version}), ${misc:Depends}
 Description: Lossy compression of digital photographic images.
  Image Compression format, based on the VP8 codec.
@@ -20,7 +20,7 @@ Description: Lossy compression of digital photographic images.
  compression of images for the web. More than 30% extra gain over
  optimized JPEG, for same quality, is not unusual.
 
-Package: libwebp6
+Package: libwebp7
 Section: libs
 Architecture: any
 Multi-Arch: same
