@@ -33,7 +33,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.codename }}
-          path: webp/*.deb
+          path: |
+            webp/*.deb
+            webp/*.ddeb
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
