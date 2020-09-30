@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build debian package
-        uses: link-u/execute-on-separated-ubuntu@v1
+        uses: link-u/execute-on-separated-ubuntu@v1.0.1
         with:
           script: scripts/all.sh
           on: ${{ matrix.codename }}
@@ -50,7 +50,7 @@ jobs:
           name: ${{ matrix.codename }}
           path: artifact
       - name: Check debian package
-        uses: link-u/execute-on-separated-ubuntu@master
+        uses: link-u/execute-on-separated-ubuntu@v1.0.1
         with:
           script: scripts/test.sh
           on: ${{ matrix.codename }}
