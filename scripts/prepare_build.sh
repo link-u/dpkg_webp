@@ -6,7 +6,7 @@ set -eu
 scripts_dir=$(readlink -f $(cd $(dirname $0) && pwd))
 
 ## tiff ソースの tar ball 名を取得
-src_tiff="$(basename $(ls -1vd ${scripts_dir}/../tiff/tiff-*.tar.gz | tail -n 1) .tar.gz)"
+src_tiff="$(basename "$(ls -1vd ${scripts_dir}/../tiff/tiff-*.tar.gz | tail -n 1)" .tar.gz)"
 echo $src_tiff
 
 ## tiff のビルド

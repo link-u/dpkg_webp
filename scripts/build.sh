@@ -3,7 +3,7 @@
 set -eu
 
 ## git リポジトリ上の root のパスを取得
-root_dir=$(readlink -f $(cd $(dirname $0)/.. && pwd))
+root_dir="$(cd "$(dirname "$(readlink -f "$0")")" & cd .. && pwd)"
 
 ## パッケージのディレクトリ名
 pkg_dir="webp"
