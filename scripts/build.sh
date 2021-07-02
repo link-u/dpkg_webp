@@ -9,14 +9,14 @@ root_dir="$(cd "$(dirname "$(readlink -f "$0")")" & cd .. && pwd)"
 pkg_dir="webp"
 
 ## パッケージのソース tar ball のファイル名とバージョン名の取得
-src="$(basename $(ls -1vd ${root_dir}/${pkg_dir}/*.tar.gz | tail -n 1))";
-version="$(basename ${src} .tar.gz)";
+src="$(basename "$(ls -1vd ${root_dir}/${pkg_dir}/*.tar.gz | tail -n 1)")"
+version="$(basename "${src}" .tar.gz)"
 
 ## パッケージのソース tar ball の展開
-env --chdir="${root_dir}/${pkg_dir}/" tar xvf "${src}";
+env --chdir="${root_dir}/${pkg_dir}/" tar xvf "${src}"
 
 ## 展開したパッケージのソースのディレクトリ名取得
-src_dir=$(basename $(ls -1vd ${root_dir}/${pkg_dir}/*${version} | tail -n 1));
+src_dir="$(basename "$(ls -1vd ${root_dir}/${pkg_dir}/*${version} | tail -n 1)")"
 
 ## debian package のビルド
 env --chdir="${root_dir}/${pkg_dir}/" cp -r debian "${src_dir}";
