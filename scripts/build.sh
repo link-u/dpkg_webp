@@ -9,7 +9,7 @@ root_dir="$(cd "$(dirname "$(readlink -f "$0")")" && cd .. && pwd)"
 pkg_dir="webp"
 
 ## パッケージのソース tar ball のファイル名とバージョン名の取得
-src="$(basename "$(find "${root_dir}/${pkg_dir}" -type f -name "*.tar.gz")")"
+src="$(basename "$(find "${root_dir}/${pkg_dir}" -mindepth 1 -maxdepth 1 -type f -name "*.tar.gz")")"
 libname="$(basename "${src}" ".tar.gz")"
 
 ## パッケージのソース tar ball の展開
